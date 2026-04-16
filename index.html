@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theory2Econ – HSC Economics</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: #f0f0ec;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Header ─────────────────────────────── */
+  header {
+    background: #0A0C56;
+    padding: 24px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(10,12,86,0.35);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .logo-box {
+    background: white;
+    border-radius: 10px;
+    padding: 8px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-box svg {
+    width: 220px;
+    height: 52px;
+    display: block;
+  }
+
+  .tagline {
+    color: rgba(255,255,255,0.8);
+    font-size: 13.5px;
+    line-height: 1.5;
+    letter-spacing: 0.3px;
+    border-left: 3px solid #EC3C78;
+    padding-left: 18px;
+  }
+
+  .tagline strong {
+    display: block;
+    color: white;
+    font-size: 14.5px;
+    margin-bottom: 2px;
+  }
+
+  /* ── Hero ────────────────────────────────── */
+  .hero {
+    text-align: center;
+    padding: 64px 24px 40px;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: #EC3C78;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 50px;
+    margin-bottom: 18px;
+  }
+
+  .hero h1 {
+    color: #0A0C56;
+    font-size: 2.4rem;
+    font-weight: 800;
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+  }
+
+  .hero h1 span { color: #EC3C78; }
+
+  .hero p {
+    color: #555;
+    font-size: 1.1rem;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── Portals ─────────────────────────────── */
+  .portals {
+    display: flex;
+    gap: 28px;
+    justify-content: center;
+    padding: 32px 40px 72px;
+    flex-wrap: wrap;
+  }
+
+  .portal {
+    background: white;
+    border-radius: 20px;
+    padding: 40px 32px 36px;
+    width: 310px;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 6px 28px rgba(10,12,86,0.10);
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    border: 2.5px solid transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .portal:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 44px rgba(10,12,86,0.18);
+  }
+
+  .portal-students:hover { border-color: #EC3C78; }
+  .portal-teachers:hover { border-color: #0A0C56; }
+
+  .portal-illo {
+    width: 150px;
+    height: 170px;
+    margin-bottom: 22px;
+  }
+
+  .portal h2 {
+    color: #0A0C56;
+    font-size: 1.45rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+  }
+
+  .portal p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 26px;
+    flex: 1;
+  }
+
+  .portal-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 0.2px;
+    transition: filter 0.18s ease, transform 0.18s ease;
+  }
+
+  .portal-btn:hover {
+    filter: brightness(1.12);
+    transform: scale(1.04);
+  }
+
+  .portal-students .portal-btn { background: #EC3C78; }
+  .portal-teachers .portal-btn { background: #0A0C56; }
+
+  /* ── Footer ──────────────────────────────── */
+  footer {
+    margin-top: auto;
+    background: #0A0C56;
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+    padding: 22px 20px;
+    font-size: 0.85rem;
+    letter-spacing: 0.2px;
+  }
+
+  footer strong { color: #EC3C78; font-weight: 700; }
+
+  /* ── Responsive ──────────────────────────── */
+  @media (max-width: 700px) {
+    .header-inner { flex-direction: column; gap: 14px; }
+    .tagline { border-left: none; border-top: 2px solid #EC3C78; padding-left: 0; padding-top: 12px; text-align: center; }
+    .hero h1 { font-size: 1.9rem; }
+    .portals { padding: 24px 20px 56px; gap: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Header ────────────────────────────────── -->
+<header>
+  <div class="header-inner">
+    <div class="logo-box">
+      <!-- Theory2Econ logo – cropped to text content only -->
+      <svg viewBox="380 910 1290 300" xmlns="http://www.w3.org/2000/svg" aria-label="Theory2Econ">
+        <rect x="0" y="0" width="2048" height="2048" fill="white"/>
+        <path fill="rgb(236,60,120)" d="M 1123.16 920.317 C 1124.58 920.162 1126 920.042 1127.43 919.955 C 1183.74 916.293 1204.51 961.837 1192.7 1010.52 C 1184.72 1043.42 1161.83 1065.92 1139.74 1089.87 L 1197.22 1090.12 L 1197.17 1135.97 L 1069.81 1135.91 L 1069.72 1098.22 C 1094.07 1077.54 1122.83 1050.6 1138.95 1022.78 C 1147 1008.74 1152.22 991.687 1148.11 975.545 C 1144.02 959.415 1123.24 956.962 1117.27 973.012 C 1112.6 985.597 1115.96 1003.58 1121.24 1015.74 L 1121.82 1017.04 C 1109.82 1026.3 1098.07 1035.25 1086.56 1045.12 C 1061.7 998.875 1057.66 931.015 1123.16 920.317 z"/>
+        <path fill="rgb(236,60,120)" d="M 1214.15 928.248 C 1248.97 927.372 1286.36 928.029 1321.38 928.013 C 1321.09 943.279 1321.08 958.549 1321.33 973.815 C 1301.61 974.259 1280.79 973.941 1260.99 973.956 L 1261.1 1008.03 L 1310.03 1008.05 L 1310.01 1052.25 C 1294.01 1051.81 1277.02 1052.06 1260.95 1052.03 L 1261.04 1089.97 C 1282.16 1090.07 1303.27 1090.05 1324.39 1089.88 L 1323.9 1135.99 C 1287.9 1135.32 1250.09 1135.93 1213.95 1135.96 C 1215.3 1068.11 1214.04 996.476 1214.15 928.248 z"/>
+        <path fill="rgb(10,12,86)" d="M 946.172 984.218 C 960.44 984.569 974.714 984.595 988.983 984.295 L 988.671 1052.77 C 988.638 1062.59 983.523 1108.4 1004.31 1093.29 C 1009.34 1089.63 1007.5 1056.41 1007.45 1049.53 C 1007.24 1027.84 1007.16 1006.14 1007.2 984.452 L 1049.97 984.497 L 1049.85 1076.22 C 1049.9 1098.79 1052.05 1141.44 1046.15 1161.53 C 1038.6 1180.4 1026.55 1192.8 1005.41 1195.86 C 980.322 1199.49 962.975 1191.64 943.03 1177.16 C 948.435 1168.12 953.53 1155.13 957.775 1145.21 C 968.513 1152.39 990.001 1164.48 1002.01 1153.64 C 1009.24 1147.12 1008.39 1136.21 1008.46 1127.23 C 975.986 1146.64 950.058 1128.83 946.858 1093.2 C 945.597 1079.15 946.098 1064.77 946.101 1050.67 L 946.172 984.218 z"/>
+        <path fill="rgb(10,12,86)" d="M 559.118 919.317 L 559.336 919.511 C 560.86 922.762 560.029 983.308 560.012 991.059 C 583.313 973.927 613.777 980.719 619.272 1010.86 C 622.234 1027.11 621.161 1045.52 621.168 1062.12 L 621.178 1135.96 L 578.551 1136.02 C 577.84 1101.59 578.432 1065.24 578.435 1030.66 C 577.962 1028.22 577.65 1025.66 576.079 1023.64 C 574.782 1021.98 573.065 1021.05 570.92 1020.9 C 568.052 1020.69 564.92 1021.2 562.98 1023.54 C 557.37 1030.31 559.96 1120.69 559.977 1135.97 L 517.978 1135.98 L 517.987 1000.16 C 517.987 983.657 518.988 945.35 517.278 930.983 C 530.525 927.776 545.538 922.943 559.118 919.317 z"/>
+        <path fill="rgb(236,60,120)" d="M 1473.53 982.213 C 1486.67 981.397 1498.65 981.676 1509.94 989.872 C 1545.28 1015.54 1543.71 1084.46 1522.43 1118.26 C 1514.8 1130.38 1501.98 1137.13 1488.49 1139.58 C 1476.06 1140.41 1461.88 1139.53 1451.72 1131.77 C 1416.4 1104.82 1417.31 1036.21 1440.41 1001.88 C 1448.31 990.126 1460.6 984.487 1473.53 982.213 z"/>
+        <path fill="rgb(255,255,255)" d="M 1478.98 1019.91 C 1496.75 1022.67 1493.51 1050.21 1494.02 1064.04 C 1494.44 1075.69 1492.16 1094.78 1483.48 1103.12 C 1471.91 1101.41 1468.77 1091.61 1468.36 1080.68 C 1467.76 1064.72 1463.64 1029.41 1478.98 1019.91 z"/>
+        <path fill="rgb(10,12,86)" d="M 799.461 981.335 C 852.404 979.658 862.284 1043.11 855.189 1083.15 C 850.018 1112.34 837.178 1135.56 805.257 1140.51 C 793.758 1140.28 780.842 1138.57 771.654 1131.08 C 737.362 1103.14 738.559 1033.04 763.649 999.575 C 772.838 987.317 785.335 982.966 799.461 981.335 z"/>
+        <path fill="rgb(255,255,255)" d="M 798.45 1019.87 C 801.189 1019.99 804.574 1019.94 806.612 1021.89 C 814.966 1029.84 814.604 1053.39 814.308 1064.04 C 813.941 1077.22 813.895 1093.52 804.254 1102.92 C 786.167 1100.83 789.01 1072.22 788.699 1058.65 C 788.435 1047.15 789.794 1028.27 798.45 1019.87 z"/>
+        <path fill="rgb(10,12,86)" d="M 393.635 928.096 L 507.997 928.049 C 507.832 943.031 507.866 958.014 508.098 972.995 C 496.449 972.894 484.799 973.004 473.154 973.323 C 473.595 1015.38 473.72 1057.44 473.53 1099.5 C 473.406 1111.63 473.523 1123.76 473.882 1135.89 L 426.965 1135.93 L 426.881 973.092 C 415.931 972.933 404.506 973.122 393.515 973.164 C 393.688 958.142 393.728 943.118 393.635 928.096 z"/>
+        <path fill="rgb(236,60,120)" d="M 1600.05 982.278 C 1602.02 982.114 1603.99 981.993 1605.96 981.916 C 1659.85 979.938 1654.12 1030.14 1654.04 1066.71 L 1654.2 1136.05 C 1640.36 1135.83 1626.52 1135.8 1612.68 1135.94 C 1612.26 1104.38 1612.41 1072.76 1612.41 1041.21 C 1612.41 1032.59 1612.71 1027.89 1606.68 1021.97 C 1588.48 1021.75 1593.74 1051.04 1593.74 1064.46 L 1593.71 1135.94 L 1551.93 1135.83 L 1551.81 1070.84 C 1551.73 1032.12 1550.76 990.543 1600.05 982.278 z"/>
+        <path fill="rgb(10,12,86)" d="M 688.817 981.353 C 732.451 980.218 747.655 1026.42 726.591 1059.23 C 716.864 1074.38 695.15 1078.76 678.334 1081.04 C 684.275 1110.78 704.394 1106.74 725.71 1093.73 C 729.567 1101.9 737.465 1117.08 739.697 1124.98 C 692.15 1153.37 645.933 1144.82 636.401 1083.04 C 632.225 1055.97 634.749 1023.38 650.944 1000.45 C 660.045 987.568 673.843 983.108 688.817 981.353 z"/>
+        <path fill="rgb(255,255,255)" d="M 686.126 1012.88 C 704.662 1011.42 701.561 1037.81 689.325 1047.07 C 685.596 1048.25 683.058 1049.47 679.221 1048.93 C 674.043 1042.47 680.931 1019.47 686.126 1012.88 z"/>
+        <path fill="rgb(236,60,120)" d="M 1378.51 982.229 C 1395.47 980.589 1410.05 983.54 1424.38 993.129 C 1419.12 1004.56 1414.98 1017.52 1410.32 1029.43 C 1380.21 1004.05 1370.33 1040.19 1371.92 1065.52 C 1373.5 1090.89 1381.81 1112.44 1411.17 1094.01 C 1415.79 1104.36 1419.13 1113.96 1424.24 1124.5 C 1424.41 1126.65 1424.41 1125.61 1423.4 1127.88 C 1415.74 1133.43 1404.64 1137.25 1395.58 1138.97 C 1323.27 1152.72 1314.47 1044.38 1344.53 1002.32 C 1353.73 989.444 1363.82 984.779 1378.51 982.229 z"/>
+        <path fill="rgb(10,12,86)" d="M 919.183 982.31 C 923.248 981.997 930.752 982.481 935.069 982.63 L 935.464 1021.7 C 934.495 1021.68 933.527 1021.67 932.559 1021.66 C 922.612 1021.61 914.752 1023.09 913.126 1034.93 C 911.44 1047.21 912.155 1060.41 912.186 1072.85 L 912.253 1135.97 L 885.75 1136.02 L 870.042 1135.99 L 869.901 1074.96 C 869.84 1035.1 867.473 989.62 919.183 982.31 z"/>
+      </svg>
+    </div>
+    <div class="tagline">
+      <strong>HSC Economics</strong>
+      Theory, Diagrams &amp; Practice Quizzes
+    </div>
+  </div>
+</header>
+
+<!-- ── Hero ─────────────────────────────────── -->
+<main>
+  <section class="hero">
+    <div class="hero-badge">HSC Economics · Interactive Learning</div>
+    <h1>Master the <span>Theory.</span><br>Ace the Exam.</h1>
+    <p>Theory2Econ gives students the tools they need to understand and apply economic theory — with interactive diagrams, practice quizzes and instant feedback.</p>
+  </section>
+
+  <!-- ── Portal Tiles ──────────────────────── -->
+  <section class="portals">
+
+    <!-- Student Portal -->
+    <a class="portal portal-students" href="student.html">
+      <!-- Student illustration: sitting at a desk studying -->
+      <svg class="portal-illo" viewBox="0 0 150 170" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Desk surface -->
+        <rect x="10" y="130" width="130" height="9" rx="3" fill="#0A0C56" opacity="0.18"/>
+        <!-- Desk legs -->
+        <rect x="20" y="138" width="6" height="18" rx="2" fill="#0A0C56" opacity="0.14"/>
+        <rect x="124" y="138" width="6" height="18" rx="2" fill="#0A0C56" opacity="0.14"/>
+        <!-- Chair seat -->
+        <rect x="42" y="118" width="66" height="14" rx="6" fill="#EC3C78" opacity="0.25"/>
+        <!-- Chair back -->
+        <rect x="48" y="90" width="8" height="30" rx="3" fill="#EC3C78" opacity="0.25"/>
+        <rect x="94" y="90" width="8" height="30" rx="3" fill="#EC3C78" opacity="0.25"/>
+        <!-- Body torso -->
+        <rect x="46" y="100" width="58" height="32" rx="10" fill="#0A0C56"/>
+        <!-- Shirt collar/accent stripe -->
+        <rect x="66" y="100" width="18" height="8" rx="4" fill="#EC3C78"/>
+        <!-- Left arm resting on desk -->
+        <ellipse cx="30" cy="127" rx="20" ry="7" fill="#f5c9a0" transform="rotate(-8,30,127)"/>
+        <!-- Right arm holding pencil area -->
+        <ellipse cx="122" cy="122" rx="18" ry="7" fill="#0A0C56" transform="rotate(10,122,122)"/>
+        <!-- Neck -->
+        <rect x="68" y="91" width="14" height="12" rx="5" fill="#f5c9a0"/>
+        <!-- Head -->
+        <ellipse cx="75" cy="76" rx="21" ry="23" fill="#f5c9a0"/>
+        <!-- Hair -->
+        <path d="M54 72 Q55 50 75 48 Q95 50 96 72 Q93 58 75 57 Q57 58 54 72 Z" fill="#0A0C56"/>
+        <!-- Eyes -->
+        <ellipse cx="68" cy="76" rx="2.5" ry="2.8" fill="#0A0C56"/>
+        <ellipse cx="82" cy="76" rx="2.5" ry="2.8" fill="#0A0C56"/>
+        <!-- Eye shine -->
+        <circle cx="69.5" cy="75" r="0.9" fill="white"/>
+        <circle cx="83.5" cy="75" r="0.9" fill="white"/>
+        <!-- Smile -->
+        <path d="M69 86 Q75 91 81 86" stroke="#0A0C56" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <!-- Open book on desk -->
+        <rect x="16" y="120" width="54" height="12" rx="2" fill="white" stroke="#0A0C56" stroke-width="1.5"/>
+        <line x1="43" y1="120" x2="43" y2="132" stroke="#0A0C56" stroke-width="1.2"/>
+        <!-- Book lines (text on left page) -->
+        <line x1="21" y1="124" x2="38" y2="124" stroke="#EC3C78" stroke-width="1.2" opacity="0.6"/>
+        <line x1="21" y1="127" x2="38" y2="127" stroke="#0A0C56" stroke-width="1" opacity="0.3"/>
+        <line x1="21" y1="130" x2="34" y2="130" stroke="#0A0C56" stroke-width="1" opacity="0.3"/>
+        <!-- Book lines (right page – diagram doodle) -->
+        <line x1="47" y1="129" x2="66" y2="123" stroke="#EC3C78" stroke-width="1" opacity="0.5"/>
+        <line x1="47" y1="123" x2="66" y2="129" stroke="#0A0C56" stroke-width="1" opacity="0.5"/>
+        <!-- Pencil -->
+        <rect x="108" y="114" width="4" height="26" rx="1.5" fill="#EC3C78" transform="rotate(18,110,127)"/>
+        <polygon points="106,138 110,138 108,145" fill="#f5c9a0" transform="rotate(18,108,141)"/>
+        <rect x="106" y="112" width="4" height="4" rx="0.5" fill="#aaa" transform="rotate(18,108,114)"/>
+        <!-- Small thought bubble – supply/demand chart -->
+        <ellipse cx="112" cy="46" rx="26" ry="22" fill="white" stroke="#0A0C56" stroke-width="1.5" opacity="0.9"/>
+        <ellipse cx="93" cy="62" rx="6" ry="5" fill="white" stroke="#0A0C56" stroke-width="1.2" opacity="0.7"/>
+        <ellipse cx="85" cy="70" rx="4" ry="3.5" fill="white" stroke="#0A0C56" stroke-width="1" opacity="0.5"/>
+        <!-- Mini S&D in thought bubble -->
+        <line x1="99" y1="61" x2="125" y2="35" stroke="#0A0C56" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+        <line x1="99" y1="35" x2="125" y2="59" stroke="#EC3C78" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+        <circle cx="112" cy="47" r="3" fill="#EC3C78" opacity="0.9"/>
+        <text x="127" y="36" font-size="7" font-family="Verdana" font-weight="bold" fill="#0A0C56" opacity="0.8">D</text>
+        <text x="127" y="61" font-size="7" font-family="Verdana" font-weight="bold" fill="#EC3C78" opacity="0.8">S</text>
+      </svg>
+      <h2>For Students</h2>
+      <p>Access your quizzes, practise theory and test your knowledge with interactive economics diagrams.</p>
+      <span class="portal-btn">Enter Student Portal →</span>
+    </a>
+
+    <!-- Teacher Portal -->
+    <a class="portal portal-teachers" href="teacher.html">
+      <!-- Teacher illustration: standing at whiteboard with S&D diagram -->
+      <svg class="portal-illo" viewBox="0 0 150 170" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Whiteboard frame -->
+        <rect x="8" y="8" width="110" height="74" rx="6" fill="white" stroke="#0A0C56" stroke-width="2.5"/>
+        <!-- Whiteboard surface -->
+        <rect x="14" y="14" width="98" height="62" rx="3" fill="#f9f9f9"/>
+        <!-- Whiteboard tray -->
+        <rect x="8" y="80" width="110" height="6" rx="2" fill="#0A0C56" opacity="0.45"/>
+        <!-- Axes on board -->
+        <line x1="26" y1="69" x2="26" y2="24" stroke="#888" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="26" y1="69" x2="82" y2="69" stroke="#888" stroke-width="1.5" stroke-linecap="round"/>
+        <polygon points="26,22 23,28 29,28" fill="#888"/>
+        <polygon points="84,69 78,66 78,72" fill="#888"/>
+        <!-- Demand line (navy, downward slope) -->
+        <line x1="28" y1="28" x2="79" y2="67" stroke="#0A0C56" stroke-width="2.2" stroke-linecap="round"/>
+        <!-- Supply line (pink, upward slope) -->
+        <line x1="28" y1="67" x2="79" y2="28" stroke="#EC3C78" stroke-width="2.2" stroke-linecap="round"/>
+        <!-- Equilibrium dashed lines -->
+        <line x1="26" y1="47.5" x2="53.5" y2="47.5" stroke="#888" stroke-width="1" stroke-dasharray="3,2"/>
+        <line x1="53.5" y1="69" x2="53.5" y2="47.5" stroke="#888" stroke-width="1" stroke-dasharray="3,2"/>
+        <!-- Equilibrium dot -->
+        <circle cx="53.5" cy="47.5" r="4.5" fill="#EC3C78" stroke="white" stroke-width="1.5"/>
+        <!-- Labels -->
+        <text x="80" y="29" font-size="8" font-family="Verdana" font-weight="bold" fill="#0A0C56">D</text>
+        <text x="80" y="69" font-size="8" font-family="Verdana" font-weight="bold" fill="#EC3C78">S</text>
+        <!-- Pointer stick from teacher -->
+        <line x1="120" y1="88" x2="58" y2="50" stroke="#0A0C56" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="58" cy="50" r="3" fill="#EC3C78"/>
+        <!-- Teacher body (standing to the right of board) -->
+        <!-- Legs -->
+        <rect x="118" y="148" width="10" height="18" rx="4" fill="#0A0C56" opacity="0.7"/>
+        <rect x="132" y="148" width="10" height="18" rx="4" fill="#0A0C56" opacity="0.7"/>
+        <!-- Shoes -->
+        <ellipse cx="123" cy="166" rx="8" ry="4" fill="#0A0C56" opacity="0.6"/>
+        <ellipse cx="137" cy="166" rx="8" ry="4" fill="#0A0C56" opacity="0.6"/>
+        <!-- Torso / blazer -->
+        <rect x="113" y="112" width="36" height="38" rx="8" fill="#0A0C56"/>
+        <!-- Blazer lapels -->
+        <polygon points="131,112 116,124 124,112" fill="#EC3C78"/>
+        <polygon points="131,112 146,124 138,112" fill="#EC3C78"/>
+        <!-- Shirt / tie -->
+        <rect x="128" y="115" width="6" height="22" rx="2" fill="white" opacity="0.9"/>
+        <polygon points="131,133 128,148 134,148" fill="#EC3C78" opacity="0.9"/>
+        <!-- Neck -->
+        <rect x="124" y="104" width="14" height="12" rx="5" fill="#f5c9a0"/>
+        <!-- Head -->
+        <ellipse cx="131" cy="90" rx="21" ry="22" fill="#f5c9a0"/>
+        <!-- Hair -->
+        <path d="M110 86 Q111 65 131 63 Q151 65 152 86 Q149 70 131 69 Q113 70 110 86 Z" fill="#3a2210"/>
+        <!-- Glasses -->
+        <rect x="120" y="88" width="10" height="7" rx="3" fill="none" stroke="#0A0C56" stroke-width="1.5"/>
+        <rect x="133" y="88" width="10" height="7" rx="3" fill="none" stroke="#0A0C56" stroke-width="1.5"/>
+        <line x1="130" y1="91.5" x2="133" y2="91.5" stroke="#0A0C56" stroke-width="1.5"/>
+        <line x1="115" y1="91.5" x2="120" y2="91.5" stroke="#0A0C56" stroke-width="1.2"/>
+        <line x1="143" y1="91.5" x2="148" y2="91.5" stroke="#0A0C56" stroke-width="1.2"/>
+        <!-- Smile -->
+        <path d="M124 100 Q131 106 138 100" stroke="#0A0C56" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <!-- Eye shine -->
+        <circle cx="122.5" cy="89.5" r="0.8" fill="white"/>
+        <circle cx="135.5" cy="89.5" r="0.8" fill="white"/>
+        <!-- Right arm raised holding pointer -->
+        <ellipse cx="110" cy="110" rx="7" ry="18" fill="#0A0C56" transform="rotate(-40,110,110)"/>
+        <!-- Left arm at side -->
+        <ellipse cx="150" cy="126" rx="7" ry="16" fill="#0A0C56" transform="rotate(15,150,126)"/>
+        <!-- Hand at pointer end -->
+        <circle cx="120" cy="89" r="0" fill="transparent"/>
+      </svg>
+      <h2>For Teachers</h2>
+      <p>Build custom quizzes with interactive diagrams. Create, manage and export your question banks with ease.</p>
+      <span class="portal-btn">Enter Teacher Portal →</span>
+    </a>
+
+  </section>
+</main>
+
+<!-- ── Footer ────────────────────────────────── -->
+<footer>
+  <p>© 2025 <strong>Theory2Econ</strong> · Helping HSC students master Economics</p>
+</footer>
+
+</body>
+</html>
