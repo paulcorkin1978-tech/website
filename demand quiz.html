@@ -6,12 +6,12 @@
 <title>HSC Economics Quiz</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Verdana',sans-serif;background:#f5f4f0;height:100vh;overflow:hidden;color:#2c2c2a}
-#app{display:flex;height:100vh}
+body{font-family:'Verdana',sans-serif;background:#f5f4f0;height:100vh;height:100dvh;overflow:hidden;color:#2c2c2a}
+#app{display:flex;height:100vh;height:100dvh}
 #diag-panel{flex:1.2;background:#fff;border-right:2px solid #d3d1c7;display:flex;align-items:center;justify-content:center;padding:32px}
 #diagWrap{width:100%}
 #diagWrap svg{width:100%;max-height:82vh}
-#q-panel{flex:1;display:flex;flex-direction:column;padding:36px 32px;gap:18px;min-width:300px;overflow-y:auto}
+#q-panel{flex:1;display:flex;flex-direction:column;padding:36px 32px;padding-bottom:max(36px,env(safe-area-inset-bottom));gap:18px;min-width:300px;overflow-y:auto}
 .qnum{font-size:11px;color:#888780;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
 .qtext{font-size:17px;line-height:1.75;font-weight:600;color:#2c2c2a}
 .abtns{display:flex;flex-direction:column;gap:10px}
