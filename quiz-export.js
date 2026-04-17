@@ -14,10 +14,10 @@ function buildQuizHTML(questions) {
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Verdana',sans-serif;background:#f5f4f0;height:100vh;height:100dvh;overflow:hidden;color:#2c2c2a}
 #app{display:flex;height:100vh;height:100dvh}
-#diag-panel{flex:1.2;background:#fff;border-right:2px solid #d3d1c7;display:flex;align-items:center;justify-content:center;padding:32px}
+#diag-panel{flex:1.2;background:#fff;border-right:2px solid #d3d1c7;display:flex;align-items:center;justify-content:center;padding:32px;overflow:hidden}
 #diagWrap{width:100%}
-#diagWrap svg{width:100%;max-height:82vh}
-#q-panel{flex:1;display:flex;flex-direction:column;padding:36px 32px;padding-bottom:max(36px,env(safe-area-inset-bottom));gap:18px;min-width:300px;overflow-y:auto}
+#diagWrap svg{width:100%;max-height:86dvh;display:block}
+#q-panel{flex:1;display:flex;flex-direction:column;padding:36px 32px;padding-bottom:max(36px,env(safe-area-inset-bottom));gap:18px;min-width:280px;overflow-y:auto}
 .qnum{font-size:11px;color:#888780;text-transform:uppercase;letter-spacing:.08em;font-weight:700}
 .qtext{font-size:17px;line-height:1.75;font-weight:600;color:#2c2c2a}
 .abtns{display:flex;flex-direction:column;gap:10px}
@@ -28,12 +28,14 @@ body{font-family:'Verdana',sans-serif;background:#f5f4f0;height:100vh;height:100
 .abtn.used{pointer-events:none;opacity:0.55}
 .fb{font-size:13px;font-weight:600;min-height:20px}
 .fb.c{color:#3b6d11}.fb.w{color:#a32d2d}
-.nav{display:flex;align-items:center;gap:12px;margin-top:auto;padding-top:16px;border-top:1.5px solid #d3d1c7;flex-shrink:0}
+.nav{display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:16px;border-top:1.5px solid #d3d1c7;flex-shrink:0}
 .nbtn{font-family:'Verdana',sans-serif;font-size:13px;font-weight:600;padding:10px 22px;border-radius:8px;cursor:pointer;border:1.5px solid #d3d1c7;background:#fff;color:#2c2c2a;transition:all .15s;white-space:nowrap}
 .nbtn:hover:not(:disabled){background:#f1efe8;border-color:#888780}
 .nbtn:disabled{opacity:0.3;cursor:not-allowed}
 .nbtn.pri{background:#185FA5;color:#fff;border-color:#185FA5}
 .nbtn.pri:hover:not(:disabled){background:#0c447c;border-color:#0c447c}
+#replayBtn{font-family:'Verdana',sans-serif;font-size:16px;font-weight:600;padding:10px 14px;border-radius:8px;cursor:pointer;border:1.5px solid #d3d1c7;background:#fff;color:#5f5e5a;transition:all .15s;white-space:nowrap}
+#replayBtn:hover{background:#f1efe8;border-color:#888780;color:#2c2c2a}
 .prog{font-size:12px;color:#888780;flex:1;text-align:center;line-height:1.5}
 #score-screen{display:none;position:fixed;inset:0;background:rgba(245,244,240,0.97);align-items:center;justify-content:center;flex-direction:column;gap:24px}
 #score-screen.show{display:flex}
@@ -52,29 +54,24 @@ body{font-family:'Verdana',sans-serif;background:#f5f4f0;height:100vh;height:100
 #app.plain-q #diag-panel{display:none}
 #app.plain-q #q-panel{max-width:700px;margin:0 auto;flex:none;width:100%}
 @media (max-height:500px){
-  #diag-panel{padding:10px}
-  #diagWrap svg{max-height:88vh}
-  #q-panel{padding:10px 14px;gap:6px}
-  .qnum{font-size:10px}
-  .qtext{font-size:13px;line-height:1.5}
-  .abtn{font-size:13px;padding:7px 12px}
-  .abtns{gap:5px}
-  .fb{font-size:11px;min-height:12px}
-  .nav{padding-top:6px;gap:8px}
-  .nbtn{font-size:11px;padding:6px 14px}
+  #diag-panel{padding:8px;align-items:flex-start}
+  #diagWrap svg{max-height:96dvh}
+  #q-panel{padding:8px 12px 8px 12px;padding-bottom:max(8px,env(safe-area-inset-bottom));gap:4px}
+  .qnum{font-size:9px}
+  .qtext{font-size:12px;line-height:1.4}
+  .abtn{font-size:12px;padding:6px 10px}
+  .abtns{gap:3px}
+  .fb{font-size:10px;min-height:10px}
+  .nav{padding-top:5px;gap:5px}
+  .nbtn{font-size:11px;padding:7px 12px}
+  #replayBtn{font-size:11px;padding:7px 8px}
   .prog{font-size:10px}
-  #replayBtn{font-size:13px;padding:5px 14px}
-  #diag-inner{gap:8px}
 }
-#diag-inner{display:flex;flex-direction:column;align-items:center;width:100%;gap:16px}
-#replayBtn{background:none;border:2px solid #d3d1c7;border-radius:50px;padding:9px 26px;font-size:17px;cursor:pointer;color:#5f5e5a;transition:all .2s;font-family:'Verdana',sans-serif;letter-spacing:0.02em}
-#replayBtn:hover{background:#f1efe8;border-color:#888780;color:#2c2c2a}
-#replayBtn:active{transform:scale(0.96)}
 </style>
 </head>
 <body>
 <div id="app">
-  <div id="diag-panel"><div id="diag-inner"><div id="diagWrap"></div><button id="replayBtn" onclick="replayAnim()" title="Replay animation" style="display:none">↺ Replay</button></div></div>
+  <div id="diag-panel"><div id="diagWrap"></div></div>
   <div id="q-panel">
     <div class="qnum" id="qnum"></div>
     <div class="qtext" id="qtext"></div>
@@ -82,6 +79,7 @@ body{font-family:'Verdana',sans-serif;background:#f5f4f0;height:100vh;height:100
     <div class="fb" id="fb"></div>
     <div class="nav">
       <button class="nbtn" id="prevBtn" onclick="prev()">← Prev</button>
+      <button id="replayBtn" onclick="replayAnim()" title="Replay animation" style="display:none">↺</button>
       <div class="prog" id="prog"></div>
       <button class="nbtn pri" id="nextBtn" onclick="next()">Next →</button>
     </div>
