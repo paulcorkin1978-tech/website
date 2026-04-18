@@ -53,6 +53,20 @@ body{font-family:'Verdana',sans-serif;background:#f5f4f0;height:100vh;height:100
 .quiz-tbl tbody tr:nth-child(even) td{background:#f5f4f0}
 #app.plain-q #diag-panel{display:none}
 #app.plain-q #q-panel{max-width:700px;margin:0 auto;flex:none;width:100%}
+@media (max-width:680px) and (orientation:portrait){
+  #app{flex-direction:column}
+  #diag-panel{flex:none;height:42dvh;border-right:none;border-bottom:2px solid #d3d1c7;padding:10px;justify-content:center}
+  #diagWrap svg{max-height:40dvh}
+  #q-panel{flex:1;padding:10px 14px;padding-bottom:max(10px,env(safe-area-inset-bottom));gap:6px;min-width:0;overflow-y:auto}
+  .qtext{font-size:14px;line-height:1.5}
+  .abtn{font-size:14px;padding:10px 14px}
+  .abtns{gap:6px}
+  .fb{font-size:12px;min-height:14px}
+  .nav{padding-top:6px;gap:6px}
+  .nbtn{font-size:12px;padding:8px 16px}
+  #replayBtn{font-size:12px;padding:8px 10px}
+  .prog{font-size:11px}
+}
 @media (max-height:500px){
   #diag-panel{padding:8px;align-items:flex-start}
   #diagWrap svg{max-height:96dvh}
