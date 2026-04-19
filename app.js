@@ -152,12 +152,27 @@ function clearQuiz() {
 // Unlike CSV import (text-only), this preserves ALL question data: diagram
 // types, curve shifts, colours, units, start prices, answers, correct index.
 
-function saveBank() {
+async function saveBank() {
   if (!quizQuestions.length) return;
   const name = prompt('Name this question bank:', 'quiz-bank');
   if (name === null) return;  // user cancelled
   const filename = (name.trim() || 'quiz-bank').replace(/[^a-z0-9\-_ ]/gi, '') + '.json';
   const json = JSON.stringify(quizQuestions, null, 2);
+  if (window.showSaveFilePicker) {
+    try {
+      const handle = await window.showSaveFilePicker({
+        suggestedName: filename,
+        types: [{ description: 'JSON Question Bank', accept: { 'application/json': ['.json'] } }]
+      });
+      const writable = await handle.createWritable();
+      await writable.write(json);
+      await writable.close();
+      return;
+    } catch(e) {
+      if (e.name === 'AbortError') return;  // user cancelled picker
+      // fall through to old method
+    }
+  }
   const a = document.createElement('a');
   a.href = URL.createObjectURL(new Blob([json], { type: 'application/json' }));
   a.download = filename;
@@ -302,11 +317,26 @@ function previewQuiz() {
   window.open(URL.createObjectURL(new Blob([buildQuizHTML(quizQuestions)], {type:'text/html'})), '_blank');
 }
 
-function downloadQuiz() {
+async function downloadQuiz() {
   if (!quizQuestions.length) return;
-  const blob = new Blob([buildQuizHTML(quizQuestions)], { type: 'text/html' });
+  const html = buildQuizHTML(quizQuestions);
+  if (window.showSaveFilePicker) {
+    try {
+      const handle = await window.showSaveFilePicker({
+        suggestedName: 'hsc-economics-quiz.html',
+        types: [{ description: 'HTML Quiz File', accept: { 'text/html': ['.html'] } }]
+      });
+      const writable = await handle.createWritable();
+      await writable.write(html);
+      await writable.close();
+      return;
+    } catch(e) {
+      if (e.name === 'AbortError') return;
+      // fall through to old method
+    }
+  }
   const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
+  a.href = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
   a.download = 'hsc-economics-quiz.html';
   a.click();
 }
